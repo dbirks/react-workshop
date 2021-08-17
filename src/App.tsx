@@ -1,5 +1,27 @@
+type Food = {
+    name: string;
+    quantity: number;
+}
+
+const foods: Food[] = [
+    { name: "Carrot", quantity: 1 },
+    { name: "Potato", quantity: 2 }
+]
+
 export function App() {
-    return <h1>Pantry Manager</h1>
+
+    function renderFoods() {
+        return foods.map(food => <li>{food.name}</li>)
+    }
+
+    return (
+        <>
+            <h1>Pantry Manager</h1>
+            <ul>
+                {renderFoods()}
+            </ul>
+        </>
+    )
 }
 
 // // Function declaration
@@ -8,12 +30,12 @@ export function App() {
 // export function App() {
 //     return <h1>Pantry Manager</h1>
 // }
-
+//
 // // Function expression
 // const App2 = function () {
 //     return <h1>Pantry Manager</h1>
 // }
-
+//
 // // Arrow function
 // const App3 = () => <h1>Pantry Manager</h1>
 
