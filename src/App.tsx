@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { getFoods } from "./api/foodsApi";
+
 type Food = {
     name: string;
     quantity: number;
@@ -8,12 +11,22 @@ type Food = {
 // Exercise 2:
 // 1. Add 2 properties: reorderPoint (number), type (string)
 // 2. Display all this in a table.
-const foods: Food[] = [
-    { name: "Carrot", quantity: 4, minQuantity: 2, type: "vegetable" },
-    { name: "Potato", quantity: 5, minQuantity: 4, type: "vegetable" }
-]
+// const foods: Food[] = [
+//     { name: "Carrot", quantity: 4, minQuantity: 2, type: "vegetable" },
+//     { name: "Potato", quantity: 5, minQuantity: 4, type: "vegetable" }
+// ]
 
 export function App() {
+
+    useEffect(() => {
+        async function callGetFoods() {
+            const response = await getFoods();
+            if (!response.ok) throw new Error("Call to get foods failed");
+            const foods = await response.json();
+        }
+        callGetFoods();
+    })
+
     return (
         <>
             <h1>Pantry Manager</h1>

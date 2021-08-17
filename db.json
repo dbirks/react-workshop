@@ -1,19 +1,6 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "foods": [
+    { "id": 1, "name": "Carrot", "quantity": 4, "minQuantity": 2, "type": "vegetable" },
+    { "id": 2, "name": "Potato", "quantity": 5, "minQuantity": 4, "type": "vegetable" }
+  ]
 }
