@@ -52,8 +52,10 @@ export function App() {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* Exercise 3: Add a delete button next to the name. When clicked, alert('clicked').} */}
                     {foods.map((food) => (
                         <tr key={food.name}>
+                            <td><button onClick={() => alert('clicked')}>Delete</button></td>
                             <td>{food.name}</td>
                             <td>{food.quantity}</td>
                             <td>{food.minQuantity}</td>
