@@ -9,16 +9,16 @@ const foods: Food[] = [
 ]
 
 export function App() {
-
-    function renderFoods() {
-        return foods.map(food => <li>{food.name}</li>)
-    }
-
     return (
         <>
             <h1>Pantry Manager</h1>
             <ul>
-                {renderFoods()}
+                {/* Exercise 1: DIsplay quantity next to food with a dash in between */}
+                {foods.map((food) => (
+                    <li>
+                        {food.name} - {food.quantity}
+                    </li>
+                ))}
             </ul>
         </>
     )
