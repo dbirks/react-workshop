@@ -1,25 +1,48 @@
 type Food = {
     name: string;
     quantity: number;
+    minQuantity: number;
+    type: string;
 }
 
+// Exercise 2:
+// 1. Add 2 properties: reorderPoint (number), type (string)
+// 2. Display all this in a table.
 const foods: Food[] = [
-    { name: "Carrot", quantity: 1 },
-    { name: "Potato", quantity: 2 }
+    { name: "Carrot", quantity: 4, minQuantity: 2, type: "vegetable" },
+    { name: "Potato", quantity: 5, minQuantity: 4, type: "vegetable" }
 ]
 
 export function App() {
     return (
         <>
             <h1>Pantry Manager</h1>
-            <ul>
-                {/* Exercise 1: DIsplay quantity next to food with a dash in between */}
-                {foods.map((food) => (
-                    <li>
-                        {food.name} - {food.quantity}
-                    </li>
-                ))}
-            </ul>
+            <table>
+                <thead>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Min Quantity
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                </thead>
+                <tbody>
+                    {foods.map((food) => (
+                        <tr>
+                            <td>{food.name}</td>
+                            <td>{food.quantity}</td>
+                            <td>{food.minQuantity}</td>
+                            <td>{food.type}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </>
     )
 }
