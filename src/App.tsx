@@ -36,7 +36,7 @@ export function App() {
                 </thead>
                 <tbody>
                     {foods.map((food) => (
-                        <tr>
+                        <tr key={food.name}>
                             <td>{food.name}</td>
                             <td>{food.quantity}</td>
                             <td>{food.minQuantity}</td>
