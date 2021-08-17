@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { deleteFood, getFoods } from "./api/foodsApi";
 
-type Food = {
+export type Food = {
     id: number;
     name: string;
     quantity: number;
@@ -10,23 +10,14 @@ type Food = {
     type: string;
 }
 
-// Exercise 2:
-// 1. Add 2 properties: reorderPoint (number), type (string)
-// 2. Display all this in a table.
-// const foods: Food[] = [
-//     { name: "Carrot", quantity: 4, minQuantity: 2, type: "vegetable" },
-//     { name: "Potato", quantity: 5, minQuantity: 4, type: "vegetable" }
-// ]
-
 export function App() {
     const [foods, setFoods] = useState<Food[]>([]);
 
     useEffect(() => {
         async function callGetFoods() {
-            const response = await getFoods();
-            if (!response.ok) throw new Error("Call to get foods failed");
-            const json: Food[] = await response.json();
-            setFoods(json);
+            // Using underscore to prevent naming conflict
+            const _foods = await getFoods();
+            setFoods(_foods);
         }
         callGetFoods();
         // Using empty array for useEffect since we only want it to run once
