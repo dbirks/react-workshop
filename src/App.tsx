@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { getFoods } from "./api/foodsApi";
 
@@ -17,12 +18,14 @@ type Food = {
 // ]
 
 export function App() {
+    const [foods, setFoods] = useState<Food[]>([]);
 
     useEffect(() => {
         async function callGetFoods() {
             const response = await getFoods();
             if (!response.ok) throw new Error("Call to get foods failed");
-            const foods = await response.json();
+            const json: Food[] = await response.json();
+            setFoods(json);
         }
         callGetFoods();
     })
