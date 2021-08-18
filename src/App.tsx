@@ -40,13 +40,15 @@ export function App() {
     // Using empty array for useEffect since we only want it to run once
   }, []);
 
-  function onNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { value } = event.target;
+  // Implementing single onChange handler by convention
+  // id coorellates to the property in state
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, id } = event.target;
 
     // Create a copy of existing state, but change the name property to the new value
     setNewFood({
       ...newFood,
-      name: value,
+      [id]: value,
     });
   }
 
@@ -63,19 +65,19 @@ export function App() {
 
       <form>
         <Input
-          onChange={onNameChange}
+          onChange={onChange}
           id="name"
           label="Name"
           value={newFood.name}
         />
         <Input
-          onChange={onNameChange}
+          onChange={onChange}
           id="quantity"
           label="Quantity"
           value={newFood.quantity.toString()}
         />
         <Input
-          onChange={onNameChange}
+          onChange={onChange}
           id="min-quantity"
           label="Min Quantity"
           value={newFood.minQuantity.toString()}
