@@ -42,7 +42,9 @@ export function App() {
 
   // Implementing single onChange handler by convention
   // id coorellates to the property in state
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
     const { value, id } = event.target;
 
     // Create a copy of existing state, but change the name property to the new value
@@ -74,15 +76,18 @@ export function App() {
           onChange={onChange}
           id="quantity"
           label="Quantity"
+          type="number"
           value={newFood.quantity.toString()}
         />
         <Input
           onChange={onChange}
-          id="min-quantity"
+          id="minQuantity"
           label="Min Quantity"
+          type="number"
           value={newFood.minQuantity.toString()}
         />
         <Select
+          onChange={onChange}
           id="type"
           label="type"
           placeholderOption="Select type"

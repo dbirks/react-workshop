@@ -1,3 +1,5 @@
+import React from "react";
+
 type SelectOption = {
   label: string;
   value: string;
@@ -9,12 +11,18 @@ type SelectProps = {
   options: SelectOption[];
   placeholderOption: string;
   value: string;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
 // Destructuring props within the method signature to avoid repeating the word props
-export function Select({ placeholderOption, value, options }: SelectProps) {
+export function Select({
+  placeholderOption,
+  value,
+  options,
+  onChange,
+}: SelectProps) {
   return (
-    <select>
+    <select onChange={onChange}>
       <option value="">{placeholderOption}</option>
       {options.map((option) => (
         <option
