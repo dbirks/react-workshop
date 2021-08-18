@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { deleteFood, getFoods } from "./api/foodsApi";
+import { Input } from "./shared/Input";
 
 export type Food = {
   id: number;
@@ -27,17 +28,9 @@ export function App() {
     <>
       <h1>Pantry Manager</h1>
 
-      <form action="">
-        <div>
-          <label htmlFor="name">Name</label>
-          <br />
-          <input id="name" type="text" />
-        </div>
-        <div>
-          <label htmlFor="quantity">Quantity</label>
-          <br />
-          <input type="text" />
-        </div>
+      <form>
+        <Input id="name" label="Name" />
+        <Input id="quantity" label="Quantity" />
       </form>
 
       <table>
