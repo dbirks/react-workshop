@@ -1,5 +1,7 @@
-import { render } from 'react-dom';
+import { render } from "react-dom";
 import { App } from "./App";
+import { BrowserRouter, Route } from "react-router-dom";
+import { About } from "./About";
 
 // my first react component
 
@@ -10,6 +12,14 @@ import { App } from "./App";
 // <!-- comments -->               {/* comments */}
 // attributes are kebab-cased      props are camelCased
 
-render(<App />, document.getElementById("root"));
-
-
+render(
+  <BrowserRouter>
+    <Route path="/about">
+      <About />
+    </Route>
+    <Route path="/" exact>
+      <App />
+    </Route>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
