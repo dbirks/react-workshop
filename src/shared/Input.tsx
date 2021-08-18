@@ -1,8 +1,8 @@
 import React from "react";
 
 type InputProps = {
-  label: string;
   id: string;
+  label: string;
 };
 
 export function Input(props: InputProps) {

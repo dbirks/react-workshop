@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { deleteFood, getFoods } from "./api/foodsApi";
 import { Input } from "./shared/Input";
+import { Select } from "./shared/Select";
 
 export type Food = {
   id: number;
@@ -28,10 +29,26 @@ export function App() {
     <>
       <h1>Pantry Manager</h1>
 
+      {/* Exercise 1: Create a reusable Select and consume it below for Food Type
+        1. Vegetable
+        2. Grain
+        3. Fruit
+      */}
+
       <form>
         <Input id="name" label="Name" />
         <Input id="quantity" label="Quantity" />
         <Input id="min-quantity" label="Min Quantity" />
+        <Select
+          id="type"
+          label="type"
+          placeholderOption="Select type"
+          options={[
+            { label: "Vegetable", value: "Vegetable" },
+            { label: "Grain", value: "Grain" },
+            { label: "Fruit", value: "Fruit" },
+          ]}
+        />
       </form>
 
       <table>
