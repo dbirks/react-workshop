@@ -31,6 +31,7 @@ export function App() {
       <form>
         <Input id="name" label="Name" />
         <Input id="quantity" label="Quantity" />
+        <Input id="min-quantity" label="Min Quantity" />
       </form>
 
       <table>
