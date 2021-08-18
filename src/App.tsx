@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { deleteFood, getFoods } from "./api/foodsApi";
 import { Input } from "./shared/Input";
@@ -40,6 +40,16 @@ export function App() {
     // Using empty array for useEffect since we only want it to run once
   }, []);
 
+  function onNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = event.target;
+
+    // Create a copy of existing state, but change the name property to the new value
+    setNewFood({
+      ...newFood,
+      name: value,
+    });
+  }
+
   return (
     <>
       <h1>Pantry Manager</h1>
@@ -52,13 +62,20 @@ export function App() {
       */}
 
       <form>
-        <Input id="name" label="Name" value={newFood.name} />
         <Input
+          onChange={onNameChange}
+          id="name"
+          label="Name"
+          value={newFood.name}
+        />
+        <Input
+          onChange={onNameChange}
           id="quantity"
           label="Quantity"
           value={newFood.quantity.toString()}
         />
         <Input
+          onChange={onNameChange}
           id="min-quantity"
           label="Min Quantity"
           value={newFood.minQuantity.toString()}
