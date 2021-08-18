@@ -29,12 +29,12 @@ export function App() {
 
       <form action="">
         <div>
-          <label>Name</label>
+          <label htmlFor="name">Name</label>
           <br />
-          <input type="text" />
+          <input id="name" type="text" />
         </div>
         <div>
-          <label>Name</label>
+          <label htmlFor="quantity">Quantity</label>
           <br />
           <input type="text" />
         </div>
