@@ -1,4 +1,4 @@
-import { Food } from "../App";
+import { Food, newFood } from "../App";
 
 export async function getFoods() {
     const response =  await fetch("http://localhost:3001/foods");
@@ -12,4 +12,16 @@ export async function deleteFood(id:number) {
     });
     if (!response.ok) throw new Error('Delete failed');
     return response.json;
+}
+
+export async function addFood(food: Food) {
+    const response = await fetch("http://localhost:3001/foods/", {
+        method: "POST",
+        body: JSON.stringify(food),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    if (!response.ok) throw new Error('Call to add food failed');
+    return response.json() as Promise<newFood>;
 }

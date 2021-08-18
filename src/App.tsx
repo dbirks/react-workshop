@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { deleteFood, getFoods } from "./api/foodsApi";
+import { addFood, deleteFood, getFoods, postFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
 
@@ -54,6 +54,22 @@ export function App() {
     });
   }
 
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    // Exercise 2: Save the form data.
+    // Url: http://localhost:3001/foods
+    // Verb: POST
+    debugger;
+    event.preventDefault();
+
+    try {
+      const addedFood = await addFood(newFood);
+      setFoods([...foods, addedFood]);
+      setNewFood(emptyFood);
+    } catch (error) {
+      alert("failed to add");
+    }
+  }
+
   return (
     <>
       <h1>Pantry Manager</h1>
@@ -65,7 +81,7 @@ export function App() {
         3. Fruit
       */}
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           onChange={onChange}
           id="name"
