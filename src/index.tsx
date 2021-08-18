@@ -2,6 +2,8 @@ import { render } from "react-dom";
 import { App } from "./App";
 import { BrowserRouter, Route } from "react-router-dom";
 import { About } from "./About";
+import { FoodForm } from "./FoodForm";
+import { Nav } from "./shared/Nav";
 
 // my first react component
 
@@ -14,8 +16,12 @@ import { About } from "./About";
 
 render(
   <BrowserRouter>
+    <Nav />
     <Route path="/about">
       <About />
+    </Route>
+    <Route path="/food">
+      <FoodForm />
     </Route>
     <Route path="/" exact>
       <App />

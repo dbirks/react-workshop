@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
-import { addFood, deleteFood, getFoods } from "./api/foodsApi";
-import { Input } from "./shared/Input";
-import { Select } from "./shared/Select";
-import { ToastContainer, toast } from "react-toastify";
+import { deleteFood, getFoods } from "./api/foodsApi";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export type Food = {
@@ -14,23 +12,8 @@ export type Food = {
   type: string;
 };
 
-export type newFood = {
-  name: string;
-  quantity: number;
-  minQuantity: number;
-  type: string;
-};
-
-const emptyFood: newFood = {
-  name: "",
-  quantity: 0,
-  minQuantity: 0,
-  type: "",
-};
-
 export function App() {
   const [foods, setFoods] = useState<Food[]>([]);
-  const [newFood, setNewFood] = useState<newFood>(emptyFood);
 
   useEffect(() => {
     async function callGetFoods() {
@@ -42,77 +25,11 @@ export function App() {
     // Using empty array for useEffect since we only want it to run once
   }, []);
 
-  // Implementing single onChange handler by convention
-  // id coorellates to the property in state
-  function onChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) {
-    const { value, id } = event.target;
-
-    // Create a copy of existing state, but change the name property to the new value
-    setNewFood({
-      ...newFood,
-      [id]: value,
-    });
-  }
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    // Exercise 2: Save the form data.
-    // Url: http://localhost:3001/foods
-    // Verb: POST
-    event.preventDefault();
-
-    try {
-      const addedFood = await addFood(newFood);
-      setFoods([...foods, addedFood]);
-      setNewFood(emptyFood);
-      toast.success("Food saved! �� ");
-    } catch (error) {
-      toast.error("Failed to add");
-    }
-  }
-
   return (
     <>
       <ToastContainer />
 
       <h1>Pantry Manager</h1>
-
-      <form onSubmit={handleSubmit}>
-        <Input
-          onChange={onChange}
-          id="name"
-          label="Name"
-          value={newFood.name}
-        />
-        <Input
-          onChange={onChange}
-          id="quantity"
-          label="Quantity"
-          type="number"
-          value={newFood.quantity.toString()}
-        />
-        <Input
-          onChange={onChange}
-          id="minQuantity"
-          label="Min Quantity"
-          type="number"
-          value={newFood.minQuantity.toString()}
-        />
-        <Select
-          onChange={onChange}
-          id="type"
-          label="type"
-          placeholderOption="Select type"
-          options={[
-            { label: "Vegetable", value: "Vegetable" },
-            { label: "Grain", value: "Grain" },
-            { label: "Fruit", value: "Fruit" },
-          ]}
-          value={newFood.type}
-        />
-        <input className="btn btn-primary" type="submit" value="Save Food" />
-      </form>
 
       <table>
         <thead>
