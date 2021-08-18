@@ -5,7 +5,7 @@
 3. What is JSX? How does it differ from HTML?
   - a user-friendly way to have javascript make html elements. small differences like class vs className.
 4. What are props? What is its data type?
-  - props are what are passed to a component. any
+  - props are what are passed to a component. object
 5. What does JSX compile down to?
   - jsx compiles down to javascript
 6. What is create react app?
@@ -17,7 +17,7 @@
 9. Where is the script you’re running declared?
   - in the package.json, specifically in node_modules in the react-scripts package
 10. Are there alternatives to create react app? If so how would you find them and why would you consider them?
- - javascriptstuff.com shows alternatives. If you wanted something more opionated maybe?
+ - javascriptstuff.com shows alternatives. Next, Gatsby, Redwood. If you wanted server side rendering
 11. What does the curly brace mean inside JSX?
  - {} means javascript is starting here
 12. How do you handle public vs private in JavaScript modules?
@@ -29,9 +29,9 @@
 15. Where are our apps dependencies declared?
  - in package.json
 16. What is the syntax for importing a component called Hello from the same directory?
- - import { Hello } from './Hello.tsx';
+ - import { Hello } from './Hello';
 17. What is the name for that syntax?
- - destructuring
+ - ES import syntax
 18. What if I want to import a specific portion of a file?
  - use a named import
 19. When do we use a relative path in import?
