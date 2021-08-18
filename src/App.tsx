@@ -12,8 +12,23 @@ export type Food = {
   type: string;
 };
 
+export type newFood = {
+  name: string;
+  quantity: number;
+  minQuantity: number;
+  type: string;
+};
+
+const emptyFood: newFood = {
+  name: "",
+  quantity: 0,
+  minQuantity: 0,
+  type: "",
+};
+
 export function App() {
   const [foods, setFoods] = useState<Food[]>([]);
+  const [newFood, setNewFood] = useState<newFood>(emptyFood);
 
   useEffect(() => {
     async function callGetFoods() {
@@ -29,16 +44,25 @@ export function App() {
     <>
       <h1>Pantry Manager</h1>
 
-      {/* Exercise 1: Create a reusable Select and consume it below for Food Type
+      {/*
+        Exercise 1: Create a reusable Select and consume it below for Food Type
         1. Vegetable
         2. Grain
         3. Fruit
       */}
 
       <form>
-        <Input id="name" label="Name" />
-        <Input id="quantity" label="Quantity" />
-        <Input id="min-quantity" label="Min Quantity" />
+        <Input id="name" label="Name" value={newFood.name} />
+        <Input
+          id="quantity"
+          label="Quantity"
+          value={newFood.quantity.toString()}
+        />
+        <Input
+          id="min-quantity"
+          label="Min Quantity"
+          value={newFood.minQuantity.toString()}
+        />
         <Select
           id="type"
           label="type"
@@ -48,6 +72,7 @@ export function App() {
             { label: "Grain", value: "Grain" },
             { label: "Fruit", value: "Fruit" },
           ]}
+          value={newFood.type}
         />
       </form>
 
