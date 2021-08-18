@@ -98,6 +98,7 @@ export function App() {
           ]}
           value={newFood.type}
         />
+        <input className="btn btn-primary" type="submit" value="Save Food" />
       </form>
 
       <table>
