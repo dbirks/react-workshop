@@ -1,3 +1,15 @@
+# react-workshop
+
+Link to the workshop agenda: 
+
+https://github.com/coryhouse/reactjsconsulting/issues/71
+
+Link to Cory's repo:
+
+https://github.com/coryhouse/e-gineering
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
