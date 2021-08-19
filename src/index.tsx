@@ -1,11 +1,5 @@
 import { render } from "react-dom";
 import { App } from "./App";
-import { BrowserRouter, Route } from "react-router-dom";
-import { About } from "./About";
-import { FoodForm } from "./FoodForm";
-import { Nav } from "./shared/Nav";
-
-// my first react component
 
 // HTML            vs              JSX
 // class                           className
@@ -15,25 +9,4 @@ import { Nav } from "./shared/Nav";
 // attributes are kebab-cased      props are camelCased
 // options accept selected         select accepts value
 
-render(
-  <BrowserRouter>
-    <Nav />
-
-    <Route path="/about">
-      <About />
-    </Route>
-
-    <Route path="/food" exact>
-      <FoodForm />
-    </Route>
-
-    <Route path="/food/:foodId">
-      <FoodForm />
-    </Route>
-
-    <Route path="/" exact>
-      <App />
-    </Route>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+render(<App />, document.getElementById("root"));
