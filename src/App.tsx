@@ -32,7 +32,9 @@ export function App() {
 
       <h1>Pantry Manager</h1>
 
-      <Link className="btn btn-secondary" to="/food">Add Food</Link>
+      <Link className="btn btn-secondary" to="/food">
+        Add Food
+      </Link>
 
       <table>
         <thead>
@@ -44,7 +46,6 @@ export function App() {
           </tr>
         </thead>
         <tbody>
-          {/* Exercise 3: Add a delete button next to the name. When clicked, alert('clicked').} */}
           {foods.map((food) => (
             <tr key={food.name}>
               <td>
@@ -60,7 +61,10 @@ export function App() {
                   Delete
                 </button>
               </td>
-              <td>{food.name}</td>
+              {/* Ex 3: Link to the edit page for each food */}
+              <td>
+                <Link to={`/food/${food.id}`}>{food.name}</Link>
+              </td>
               <td>{food.quantity}</td>
               <td>{food.minQuantity}</td>
               <td>{food.type}</td>
