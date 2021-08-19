@@ -26,6 +26,8 @@ export function App() {
     // Using empty array for useEffect since we only want it to run once
   }, []);
 
+  // Ex 6: Display "Uh oh, no food in pantry" when no food exists. And hide the table."
+
   return (
     <>
       <ToastContainer />
@@ -36,51 +38,56 @@ export function App() {
         Add Food
       </Link>
 
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Min Quantity</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {foods.map((food) => (
-            <tr key={food.name}>
-              <td>
-                <button className="btn btn-danger"
-                  onClick={async () => {
-                    await deleteFood(food.id);
-                    // Return a new array with the id that was just deleted
-                    const newFoods = foods.filter((f) => f.id !== food.id);
-                    // remove the deleted food from state
-                    setFoods(newFoods);
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-              <td>
-                <Link to={`/food/${food.id}`}>{food.name}</Link>
-              </td>
-              {/* Ex 5: Style quantity in bold red when it is higher than the quantity */}
-              <td
-                style={
-                  food.quantity < food.minQuantity
-                    ? { color: "red", fontWeight: "bold" }
-                    : {}
-                }
-              >
-                {food.quantity}
-              </td>
-              <td>{food.minQuantity}</td>
-              <td>{food.type}</td>
+      {foods.length ? (
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Min Quantity</th>
+              <th>Type</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {foods.map((food) => (
+              <tr key={food.name}>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={async () => {
+                      await deleteFood(food.id);
+                      // Return a new array with the id that was just deleted
+                      const newFoods = foods.filter((f) => f.id !== food.id);
+                      // remove the deleted food from state
+                      setFoods(newFoods);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td>
+                  <Link to={`/food/${food.id}`}>{food.name}</Link>
+                </td>
+                {/* Ex 5: Style quantity in bold red when it is higher than the quantity */}
+                <td
+                  style={
+                    food.quantity < food.minQuantity
+                      ? { color: "red", fontWeight: "bold" }
+                      : {}
+                  }
+                >
+                  {food.quantity}
+                </td>
+                <td>{food.minQuantity}</td>
+                <td>{food.type}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p> Uh oh, no foods :( </p>
+      )}
     </>
   );
 }
