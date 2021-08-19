@@ -6,25 +6,29 @@ import { Nav } from "./shared/Nav";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 export function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <BrowserRouter>
-      <Nav />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Nav />
 
-      <Route path="/about">
-        <About />
-      </Route>
+        <Route path="/about">
+          <About />
+        </Route>
 
-      <Route path="/food" exact>
-        <FoodForm />
-      </Route>
+        <Route path="/food" exact>
+          <FoodForm />
+        </Route>
 
-      <Route path="/food/:foodId">
-        <FoodForm />
-      </Route>
+        <Route path="/food/:foodId">
+          <FoodForm />
+        </Route>
 
-      <Route path="/" exact>
-        <Home />
-      </Route>
-    </BrowserRouter>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
