@@ -3,14 +3,14 @@
     {
       "id": 1,
       "name": "Carrots",
-      "quantity": 4,
+      "quantity": "2",
       "minQuantity": 2,
       "type": "vegetable"
     },
     {
       "id": 2,
       "name": "Potato",
-      "quantity": 5,
+      "quantity": "3",
       "minQuantity": 4,
       "type": "vegetable"
     },
