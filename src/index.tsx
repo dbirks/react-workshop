@@ -18,12 +18,19 @@ import { Nav } from "./shared/Nav";
 render(
   <BrowserRouter>
     <Nav />
+
     <Route path="/about">
       <About />
     </Route>
-    <Route path="/food">
+
+    <Route path="/food" exact>
       <FoodForm />
     </Route>
+
+    <Route path="/food/:foodId">
+      <FoodForm />
+    </Route>
+
     <Route path="/" exact>
       <App />
     </Route>
