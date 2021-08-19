@@ -16,9 +16,11 @@ type UserContextProviderProps = {
 
 // We'll wrap our app with this component so any child components can consume the global data.
 export function UserContextProvider(props: UserContextProviderProps) {
-  <UserContext.Provider value={props.value}>
-    {props.children}
-  </UserContext.Provider>;
+  return (
+    <UserContext.Provider value={props.value}>
+      {props.children}
+    </UserContext.Provider>
+  );
 }
 
 // Custom hook to consume the user data from any component.
