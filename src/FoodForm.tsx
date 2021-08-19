@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { addFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export type NewFood = {
   name: string;
@@ -22,6 +22,10 @@ const emptyFood: NewFood = {
 export function FoodForm() {
   const [newFood, setNewFood] = useState<NewFood>(emptyFood);
   const history = useHistory();
+  const { foodId } = useParams() as any;
+  // debugger;
+
+  // Ex 2: use `foodId` to set the heading to either "Add Food or "Edit Food"
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     // Exercise 2: Save the form data.
@@ -54,6 +58,7 @@ export function FoodForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>{foodId ? "Edit Food" : "Add Food"}</h1>
       <Input onChange={onChange} id="name" label="Name" value={newFood.name} />
       <Input
         onChange={onChange}
