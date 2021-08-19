@@ -11,7 +11,7 @@ type SelectProps = {
   options: SelectOption[];
   placeholderOption: string;
   value: string;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
 // Destructuring props within the method signature to avoid repeating the word props

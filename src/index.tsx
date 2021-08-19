@@ -13,6 +13,7 @@ import { Nav } from "./shared/Nav";
 // inline styles are strings       inline styles are objects, numbers = px
 // <!-- comments -->               {/* comments */}
 // attributes are kebab-cased      props are camelCased
+// options accept selected         select accepts value
 
 render(
   <BrowserRouter>
