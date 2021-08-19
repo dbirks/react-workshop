@@ -16,11 +16,9 @@ export type Food = {
 };
 
 export function Home() {
-  const { data: foods } = useQuery("foods", getFoods);
+  const { data: foods, isLoading } = useQuery("foods", getFoods);
 
-  if (!foods) {
-    return null;
-  }
+  if (isLoading || !foods) return <p>Loading...</p>;
 
   return (
     <>
