@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { addFood } from "./api/foodsApi";
+import { addFood, getFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
 import { useHistory, useParams } from "react-router-dom";
+import { Food } from "./App";
+
+/*
+Exercise 4: Hydrate form
+  1. Get the matching food via fetch http://localhost:3001/foods/2
+    - Create the func that does the fetch
+    - put the call in useEffect
+  2. Populate the form
+*/
 
 export type NewFood = {
   name: string;
@@ -20,12 +29,18 @@ const emptyFood: NewFood = {
 };
 
 export function FoodForm() {
-  const [newFood, setNewFood] = useState<NewFood>(emptyFood);
+  const [food, setFood] = useState<NewFood>(emptyFood);
   const history = useHistory();
   const { foodId } = useParams() as any;
-  // debugger;
 
-  // Ex 2: use `foodId` to set the heading to either "Add Food or "Edit Food"
+  useEffect(() => {
+    async function fetchFood() {
+      // Using underscore to prevent naming conflict
+      const _food = await getFood(foodId);
+      setFood(_food);
+    }
+    if (foodId) fetchFood();
+  }, [foodId]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     // Exercise 2: Save the form data.
@@ -34,7 +49,7 @@ export function FoodForm() {
     event.preventDefault();
 
     try {
-      await addFood(newFood);
+      await addFood(food);
       toast.success("Food saved!");
       history.push("/"); // Redirect to home
     } catch (error) {
@@ -50,8 +65,8 @@ export function FoodForm() {
     const { value, id } = event.target;
 
     // Create a copy of existing state, but change the name property to the new value
-    setNewFood({
-      ...newFood,
+    setFood({
+      ...food,
       [id]: value,
     });
   }
@@ -59,20 +74,20 @@ export function FoodForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h1>{foodId ? "Edit Food" : "Add Food"}</h1>
-      <Input onChange={onChange} id="name" label="Name" value={newFood.name} />
+      <Input onChange={onChange} id="name" label="Name" value={food.name} />
       <Input
         onChange={onChange}
         id="quantity"
         label="Quantity"
         type="number"
-        value={newFood.quantity.toString()}
+        value={food.quantity.toString()}
       />
       <Input
         onChange={onChange}
         id="minQuantity"
         label="Min Quantity"
         type="number"
-        value={newFood.minQuantity.toString()}
+        value={food.minQuantity.toString()}
       />
       <Select
         onChange={onChange}
@@ -84,7 +99,7 @@ export function FoodForm() {
           { label: "Grain", value: "Grain" },
           { label: "Fruit", value: "Fruit" },
         ]}
-        value={newFood.type}
+        value={food.type}
       />
       <input className="btn btn-primary" type="submit" value="Save Food" />
     </form>
