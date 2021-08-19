@@ -54,6 +54,7 @@ export function Home() {
               <tr key={food.name}>
                 <td>
                   <button
+                    aria-label={`Delete ${food.name}`}
                     className="btn btn-danger"
                     onClick={async () => {
                       await deleteFood(food.id);
