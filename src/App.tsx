@@ -36,9 +36,10 @@ export function App() {
         Add Food
       </Link>
 
-      <table>
+      <table className="table table-bordered">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Quantity</th>
             <th>Min Quantity</th>
@@ -49,7 +50,7 @@ export function App() {
           {foods.map((food) => (
             <tr key={food.name}>
               <td>
-                <button
+                <button className="btn btn-danger"
                   onClick={async () => {
                     await deleteFood(food.id);
                     // Return a new array with the id that was just deleted
