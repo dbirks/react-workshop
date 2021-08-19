@@ -24,7 +24,7 @@ export async function deleteFood(id: number) {
 }
 
 export async function addFood(food: NewFood) {
-  const response = await fetch(baseUrl + "/foods/", {
+  const response = await fetch(baseUrl + "foods/", {
     method: "POST",
     body: JSON.stringify(food),
     headers: {
@@ -32,5 +32,17 @@ export async function addFood(food: NewFood) {
     },
   });
   if (!response.ok) throw new Error("Call to add food failed");
+  return response.json() as Promise<Food>;
+}
+
+export async function editFood(food: Food) {
+  const response = await fetch(baseUrl + "foods/" + food.id, {
+    method: "PUT",
+    body: JSON.stringify(food),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw new Error("Call to edit food failed");
   return response.json() as Promise<Food>;
 }

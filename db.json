@@ -2,7 +2,7 @@
   "foods": [
     {
       "id": 1,
-      "name": "Carrot",
+      "name": "Carrots",
       "quantity": 4,
       "minQuantity": 2,
       "type": "vegetable"
