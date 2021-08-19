@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { deleteFood, getFoods } from "./api/foodsApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 export type Food = {
   id: number;
@@ -30,6 +31,8 @@ export function App() {
       <ToastContainer />
 
       <h1>Pantry Manager</h1>
+
+      <Link className="btn btn-secondary" to="/food">Add Food</Link>
 
       <table>
         <thead>
