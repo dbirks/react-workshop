@@ -16,7 +16,7 @@ export async function getFood(id: number) {
 }
 
 export async function deleteFood(id: number) {
-  const response = await fetch(baseUrl + "foods" + id, {
+  const response = await fetch(baseUrl + "foods/" + id, {
     method: "DELETE",
   });
   if (!response.ok) throw new Error("Delete failed");
