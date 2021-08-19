@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 export type Food = {
   id: number;

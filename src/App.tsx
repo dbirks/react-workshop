@@ -4,12 +4,14 @@ import { About } from "./About";
 import { FoodForm } from "./FoodForm";
 import { Nav } from "./shared/Nav";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 export function App() {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools />
       <BrowserRouter>
         <Nav />
 
