@@ -13,7 +13,7 @@ export type Food = {
   type: string;
 };
 
-export function App() {
+export function Home() {
   const [foods, setFoods] = useState<Food[]>([]);
 
   useEffect(() => {
