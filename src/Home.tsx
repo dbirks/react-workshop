@@ -4,6 +4,7 @@ import { deleteFood, getFoods } from "./api/foodsApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
 
 export type Food = {
   id: number;
@@ -14,19 +15,11 @@ export type Food = {
 };
 
 export function Home() {
-  const [foods, setFoods] = useState<Food[]>([]);
+  const { data: foods } = useQuery("foods", getFoods);
 
-  useEffect(() => {
-    async function callGetFoods() {
-      // Using underscore to prevent naming conflict
-      const _foods = await getFoods();
-      setFoods(_foods);
-    }
-    callGetFoods();
-    // Using empty array for useEffect since we only want it to run once
-  }, []);
-
-  // Ex 6: Display "Uh oh, no food in pantry" when no food exists. And hide the table."
+  if (!foods) {
+    return null;
+  }
 
   return (
     <>
@@ -60,7 +53,7 @@ export function Home() {
                       // Return a new array with the id that was just deleted
                       const newFoods = foods.filter((f) => f.id !== food.id);
                       // remove the deleted food from state
-                      setFoods(newFoods);
+                      // setFoods(newFoods);
                     }}
                   >
                     Delete
