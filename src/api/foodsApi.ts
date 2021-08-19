@@ -15,7 +15,7 @@ export async function deleteFood(id: number) {
   return response.json;
 }
 
-export async function addFood(food: Food) {
+export async function addFood(food: NewFood) {
   const response = await fetch("http://localhost:3001/foods/", {
     method: "POST",
     body: JSON.stringify(food),
@@ -24,5 +24,5 @@ export async function addFood(food: Food) {
     },
   });
   if (!response.ok) throw new Error("Call to add food failed");
-  return response.json() as Promise<NewFood>;
+  return response.json() as Promise<Food>;
 }

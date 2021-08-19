@@ -1,6 +1,25 @@
 {
   "foods": [
-    { "id": 1, "name": "Carrot", "quantity": 4, "minQuantity": 2, "type": "vegetable" },
-    { "id": 2, "name": "Potato", "quantity": 5, "minQuantity": 4, "type": "vegetable" }
+    {
+      "id": 1,
+      "name": "Carrot",
+      "quantity": 4,
+      "minQuantity": 2,
+      "type": "vegetable"
+    },
+    {
+      "id": 2,
+      "name": "Potato",
+      "quantity": 5,
+      "minQuantity": 4,
+      "type": "vegetable"
+    },
+    {
+      "name": "celery",
+      "quantity": "3",
+      "minQuantity": "1",
+      "type": "Vegetable",
+      "id": 3
+    }
   ]
 }
