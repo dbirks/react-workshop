@@ -33,7 +33,7 @@ export function FoodForm() {
       await addFood(newFood);
       setNewFood(emptyFood);
       toast.success("Food saved! �� ");
-      history.push = "/"; // Redirect to home
+      history.push("/"); // Redirect to home
     } catch (error) {
       toast.error("Failed to add");
     }
